@@ -1,6 +1,5 @@
-
-
-
+package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
@@ -128,7 +127,8 @@ public class Stanza {
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
     	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
+    		if(attrezzo!=null)
+    			risultato.append(attrezzo.toString()+" ");
     	}
     	return risultato.toString();
     }
@@ -141,9 +141,11 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
+			if (attrezzo != null) 
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
 		}
+			
 		return trovato;
 	}
 
@@ -157,8 +159,9 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
+			if(attrezzo != null)
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;	
 	}
@@ -170,6 +173,24 @@ public class Stanza {
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
 		// TODO da implementare
+		if(numeroAttrezzi == 0) {
+			return false;
+		}else {
+			if(attrezzo == null) {
+				return false;
+			}else {
+				for(int i=0; i<this.attrezzi.length; i++) {
+					if(attrezzo.equals(this.attrezzi[i])) {
+						numeroAttrezzi--;
+						for(int j=i; j<this.attrezzi.length-1; j++){
+							this.attrezzi[j] = this.attrezzi[j+1];
+						}
+						this.attrezzi[this.attrezzi.length-1] = null;
+						return true;
+					}
+				}
+			}
+		}
 		return false;
 	}
 
