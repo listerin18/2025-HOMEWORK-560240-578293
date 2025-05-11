@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import it.uniroma3.diadia.Partita;
+
 public class PartitaTest {
          
 	 private Partita nuova = new Partita();
@@ -18,7 +20,7 @@ public class PartitaTest {
 	 
 	 @Test 
 	 public void testPartitaFinitaVinta () {
-		 nuova.getLab().setStanzaVincente(nuova.getLab().getStanzaCorrente());
+		 nuova.getLabirinto().setStanzaVincente(nuova.getLabirinto().getStanzaCorrente());
 		 assertTrue(nuova.isFinita());
 	 }
 	 
@@ -30,14 +32,14 @@ public class PartitaTest {
 	 
 	 @Test
 	 public void testPartitaVinta () {
-		 nuova.getLab().setStanzaVincente(nuova.getLab().getStanzaCorrente());
+		 nuova.getLabirinto().setStanzaVincente(nuova.getLabirinto().getStanzaCorrente());
 		 assertTrue(nuova.vinta());
 	 }
 	 
 	 @Test
 	 public void testPartitaNonVinta() {
-		 nuova.getLab().setStanzaVincente(nuova.getLab().getStanzaCorrente());
-		 nuova.getLab().setStanzaCorrente(nuova.getLab().getStanzaCorrente().getStanzaAdiacente(null));
+		 nuova.getLabirinto().setStanzaVincente(nuova.getLabirinto().getStanzaCorrente());
+		 nuova.getLabirinto().setStanzaCorrente(nuova.getLabirinto().getStanzaCorrente().getStanzaAdiacente(null));
 		 assertFalse(nuova.vinta());
 		 
 	 }

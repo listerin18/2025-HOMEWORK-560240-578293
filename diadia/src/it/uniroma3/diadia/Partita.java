@@ -42,6 +42,12 @@ public class Partita {
 		return finita || vinta() || (this.giocatore.getCfu() == 0);
 	}
 
+	
+	public boolean giocatoreIsVivo() {
+		if(this.giocatore.getCfu()==0)
+			return false;
+		return true;
+	}
 	/**
 	 * Imposta la partita come finita
 	 *
@@ -50,11 +56,11 @@ public class Partita {
 		this.finita = true;
 	}
 	
-	public Labirinto getLab() {
+	public Labirinto getLabirinto() {
 		return this.labirinto;
 	}
 	
-	public void setLab(Labirinto labirinto) {
+	public void setLabirinto(Labirinto labirinto) {
 		this.labirinto = labirinto;
 	}
 	
